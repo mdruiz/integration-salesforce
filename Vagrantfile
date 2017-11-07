@@ -5,4 +5,7 @@ Vagrant.configure("2") do |co|
 # DEFINITION - BOX
   co.vm.box = "ubuntu/xenial64"
   co.vm.box_version = "20171024.0.0"
+
+# DEFINITION - PROVISION
+  co.vm.provision "shell", path: "Vagrantup.sh"
 end
