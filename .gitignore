@@ -1,2 +1,9 @@
 # gitignore::author
 # __author__ is licensed under the terms of the [MIT License.](https://github.com/fredbelotte/author/blob/master/LICENSE)
+
+# PROJECT
+# exclude - filepath
+.vagrant/
+
+# exclude - filename
+ubuntu*
