@@ -9,4 +9,4 @@
 + fred belotte
 
 ## license
-__author__ is licensed under the terms of the [MIT License.](https://github.com/fredbelotte/author/blob/master/LICENSE)
+__author__ is licensed under the terms of the [MIT License](https://github.com/fredbelotte/author/blob/master/LICENSE).
