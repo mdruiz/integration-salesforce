@@ -14,4 +14,7 @@ Vagrant.configure("2") do |co|
 
 # DEFINITION - PROVISION
   co.vm.provision "shell", path: "Vagrantup.sh"
+
+# DEFINITION - SYNCED FOLDER
+  co.vm.synced_folder ".", "/vagrant"
 end
