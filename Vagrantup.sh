@@ -7,3 +7,8 @@ VERSION_DOCKER_MACHINE=v0.13.0
 
 # PACKAGE - DEFINITION
 apt update
+apt install -y \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  software-properties-common
