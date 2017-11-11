@@ -23,3 +23,7 @@ add-apt-repository \
 apt update
 apt install -y \
   docker-ce=$VERSION_DOCKER_CE
+
+# DOCKER - PERMISSION
+usermod -aG docker ubuntu
+shutdown -r 0
