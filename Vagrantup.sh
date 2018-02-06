@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # PACKAGE - VERSION
-VERSION_DOCKER_CE=17.09.0~ce-0~ubuntu
-VERSION_DOCKER_COMPOSE=1.17.0
-VERSION_DOCKER_MACHINE=v0.13.0
+DOCKER_CE_VERSION=17.12.0~ce-0~ubuntu
+DOCKER_CT_VERSION=1.18.0
 
 # PACKAGE - DEFINITION
 apt update
@@ -22,8 +21,14 @@ add-apt-repository \
 # DOCKER - COMMUNITY EDITION
 apt update
 apt install -y \
-  docker-ce=$VERSION_DOCKER_CE
+  docker-ce=$DOCKER_CE_VERSION
+
+# DOCKER - COMPOSE TOOLING
+apt update
+curl -sS -L https://github.com/docker/compose/releases/download/$DOCKER_CT_VERSION/docker-compose-`uname -s`-`uname -m` \
+  -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 # DOCKER - PERMISSION
-usermod -aG docker ubuntu
+usermod -aG docker $(whoami)
 shutdown -r 0
