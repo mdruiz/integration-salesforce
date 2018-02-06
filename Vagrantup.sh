@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # PACKAGE - VERSION
-VERSION_DOCKER_CE=17.09.0~ce-0~ubuntu
-VERSION_DOCKER_COMPOSE=1.17.0
-VERSION_DOCKER_MACHINE=v0.13.0
+DOCKER_CE_VERSION=17.12.0~ce-0~ubuntu
+DOCKER_CT_VERSION=1.18.0
 
 # PACKAGE - DEFINITION
 apt update
@@ -22,8 +21,8 @@ add-apt-repository \
 # DOCKER - COMMUNITY EDITION
 apt update
 apt install -y \
-  docker-ce=$VERSION_DOCKER_CE
+  docker-ce=$DOCKER_CE_VERSION
 
 # DOCKER - PERMISSION
-usermod -aG docker ubuntu
+usermod -aG docker vagrant
 shutdown -r 0
