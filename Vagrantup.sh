@@ -30,5 +30,5 @@ curl -L https://github.com/docker/compose/releases/download/$DOCKER_CT_VERSION/d
 chmod +x /usr/local/bin/docker-compose
 
 # DOCKER - PERMISSION
-usermod -aG docker vagrant
+usermod -aG docker $(whoami)
 shutdown -r 0
