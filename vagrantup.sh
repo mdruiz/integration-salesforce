@@ -23,5 +23,5 @@ apt install -y \
   docker-ce=$DOCKER_CE_VERSION
 
 # DOCKER - PERMISSION
-usermod -aG docker $(whoami)
+usermod -aG docker vagrant
 shutdown 0
