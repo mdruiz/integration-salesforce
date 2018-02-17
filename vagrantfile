@@ -13,6 +13,13 @@ Vagrant.configure("2") do |co|
   co.vm.network "forwarded_port", guest: 9600, host: 9600, host_ip: "127.0.0.1" # 9600-9799 / CTX
   co.vm.network "forwarded_port", guest: 9800, host: 9800, host_ip: "127.0.0.1" # 9800-9999 / STO
 
+# DEFINITION - PROVIDER
+  co.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    vb.name = "vagrantbox"
+    vb.memory = 2048
+  end
+
 # DEFINITION - PROVISION
   co.vm.provision "shell", path: "Vagrantup.sh"
 
