@@ -4,7 +4,7 @@ Vagrant.configure("2") do |co|
 
 # DEFINITION - BOX
   co.vm.box = "ubuntu/xenial64"
-  co.vm.box_version = "20171024.0.0"
+  co.vm.box_version = "20180215.0.0"
 
 # DEFINITION - NETWORK
   co.vm.network "forwarded_port", guest: 9000, host: 9000, host_ip: "127.0.0.1" # 9000-9199 / UIX
