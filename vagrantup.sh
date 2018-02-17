@@ -24,4 +24,4 @@ apt install -y \
 
 # DOCKER - PERMISSION
 usermod -aG docker $(whoami)
-shutdown -r 0
+shutdown 0
