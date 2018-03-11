@@ -11,7 +11,7 @@ Vagrant.configure("2") do |co|
   co.vm.network "forwarded_port", guest: 9200, host: 9200, host_ip: "127.0.0.1" # 9200-9399 / API
   co.vm.network "forwarded_port", guest: 9400, host: 9400, host_ip: "127.0.0.1" # 9400-9599 / BIZ
   co.vm.network "forwarded_port", guest: 9600, host: 9600, host_ip: "127.0.0.1" # 9600-9799 / CTX
-  co.vm.network "forwarded_port", guest: 9800, host: 9800, host_ip: "127.0.0.1" # 9800-9999 / STO
+  co.vm.network "forwarded_port", guest: 9800, host: 9800, host_ip: "127.0.0.1" # 9800-9999 / DSR
 
 # DEFINITION - PROVIDER
   co.vm.provider "virtualbox" do |vb|
