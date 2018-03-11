@@ -4,6 +4,7 @@
 # PROJECT
 # exclude - filepath
 .vagrant/
+.vscode/
 
 # exclude - filename
 ubuntu*

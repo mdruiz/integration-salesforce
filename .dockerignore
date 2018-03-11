@@ -4,6 +4,7 @@
 # DIRECTORY - ROOT
 # exclude - filepath
 .vagrant
+.vscode
 
 # exclude - filename
 .dockerignore
