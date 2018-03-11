@@ -16,7 +16,7 @@ Vagrant.configure("2") do |co|
 # DEFINITION - PROVIDER
   co.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.name = "vagrantbox"
+    vb.name = "vagrantbox-#{Time.now.to_i}"
     vb.memory = 2048
   end
 
