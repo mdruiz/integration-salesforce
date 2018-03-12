@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # PACKAGE - VERSION
-DOCKER_CE_VERSION=17.12.0~ce-0~ubuntu
+DOCKER_CE=17.12.1~ce-0~ubuntu
 
 # PACKAGE - DEFINITION
 apt update
@@ -20,7 +20,7 @@ add-apt-repository \
 # DOCKER - COMMUNITY EDITION
 apt update
 apt install -y \
-  docker-ce=$DOCKER_CE_VERSION
+  docker-ce=$DOCKER_CE
 
 # DOCKER - PERMISSION
 usermod -aG docker vagrant
