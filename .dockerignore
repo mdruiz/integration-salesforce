@@ -5,6 +5,8 @@
 # exclude - filepath
 .vagrant
 .vscode
+src/**/bin
+src/**/obj
 
 # exclude - filename
 .dockerignore
