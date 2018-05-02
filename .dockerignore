@@ -1,10 +1,12 @@
-# dockerignore::author
-# __author__ is licensed under the terms of the [MIT License](https://github.com/fredbelotte/author/blob/master/LICENSE).
+# integration-salesforce://dockerignore
+# licensed under the terms of the [MIT License](https://github.com/revaturecloud/integration-salesforce/blob/master/LICENSE).
 
 # DIRECTORY - ROOT
 # exclude - filepath
 .vagrant
 .vscode
+src/**/bin
+src/**/obj
 
 # exclude - filename
 .dockerignore

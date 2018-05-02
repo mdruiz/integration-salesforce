@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # PACKAGE - VERSION
-DOCKER_CE=17.12.1~ce-0~ubuntu
+DOCKER_CE=18.03.1~ce-0~ubuntu
 
 # PACKAGE - DEFINITION
 apt update
