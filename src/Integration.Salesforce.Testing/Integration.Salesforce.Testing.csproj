@@ -13,4 +13,10 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Integration.Salesforce.Context\Integration.Salesforce.Context.csproj" />
+    <ProjectReference Include="..\Integration.Salesforce.Library\Integration.Salesforce.Library.csproj" />
+    <ProjectReference Include="..\Integration.Salesforce.Service\Integration.Salesforce.Service.csproj" />
+  </ItemGroup>
+
 </Project>
