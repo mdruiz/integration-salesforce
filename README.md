@@ -1,5 +1,7 @@
 # integration-salesforce://readme
 
+![VSTS Badge](https://revaturecloudio.visualstudio.com/_apis/public/build/definitions/2da46701-d7e3-415b-8014-9844d62eb557/6/badge)
+
 ## instruction
 1. download and install Virtualbox 5.2+.
 1. download and install Vagrant 2.0.1+.
