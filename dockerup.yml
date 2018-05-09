@@ -1,5 +1,15 @@
 version: "3.6"
 
 networks:
+  net_apartment:
+
 services:
-volumes:
+  svc_apartment:
+    image: revaturecloud/integration-salesforce:edge
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+        window: 60s
