@@ -22,5 +22,18 @@ namespace Integration.Salesforce.Testing.Library.ModelTests
             Assert.NotNull(response);
             Assert.Equal(teststring, response, true);
         }
+
+        [Fact]
+        public void AddressToString_ReturnsValidString_True()
+        {
+            // assemble
+            Address address = md.Address();
+            // act
+            var response = address.ToString();
+            var teststring = $"ADDRESS{{StreetAddress:{address.StreetAddress};City:{address.City};State:{address.State};Zip:{address.Zip};}}";
+            // assert
+            Assert.NotNull(response);
+            Assert.Equal(teststring, response, true);
+        }
     }
 }
