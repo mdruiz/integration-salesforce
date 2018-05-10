@@ -17,5 +17,16 @@ namespace Integration.Salesforce.Testing.Library.ModelTests
 
             return person;
         }
+
+        public Address Address()
+        {
+            Address address = new Address();
+            address.StreetAddress = "123 S 1st st";
+            address.City = "Tampa";
+            address.State = "FL";
+            address.Zip = 33617;
+
+            return address;
+        }
     }
 }
