@@ -1,12 +1,15 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Integration.Salesforce.Library.Abstract;
 using Integration.Salesforce.Library.Validation;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json.Linq;
 
 namespace Integration.Salesforce.Library.Models
 {
-    public class Person
+    public class Person : AModel
     {
+        
         [Required]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string FirstName { get; set; }
@@ -36,6 +39,11 @@ namespace Integration.Salesforce.Library.Models
         [Required]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string BatchName { get; set; }
+
+        public override void MapJsonToModel(JObject jsonObject)
+        {
+            throw new NotImplementedException();
+        }
 
         public override string ToString()
         {
