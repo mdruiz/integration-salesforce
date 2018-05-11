@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Integration.Salesforce.Testing.Library.ModelTests
 {
-    public class PersonToStringTests
+    public class TestSuite
     {
         ModelData md = new ModelData();
 
