@@ -16,6 +16,8 @@ namespace Integration.Salesforce.Library.Abstract
 
         public DateTime LastModified { get; set; }
 
+        public string ModelType { get;set;}
+
         /// <summary> 
         /// 
         /// </summary>

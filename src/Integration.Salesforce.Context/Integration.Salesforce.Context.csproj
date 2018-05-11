@@ -10,5 +10,9 @@
     <PackageReference Include="MongoDB.Driver" Version="2.7.0-beta0001" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Integration.Salesforce.Library\Integration.Salesforce.Library.csproj" />
+  </ItemGroup>
+  
 </Project>
 
