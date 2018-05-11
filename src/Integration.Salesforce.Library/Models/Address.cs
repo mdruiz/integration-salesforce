@@ -18,7 +18,7 @@ namespace Integration.Salesforce.Library.Models
         [MaxLength(2)]
         [MinLength(2)]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
-        public override string State { get; set; }
+        public string State { get; set; }
 
         [Required]
         [MaxLength(5)]
