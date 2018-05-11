@@ -33,9 +33,6 @@ namespace Integration.Salesforce.Context
             Task.Run(() => GetAuthToken()).Wait();
         }
 
-        /// <summary>
-        /// login to salesforce and retrieves authorization token
-        /// </summary>
         private async Task GetAuthToken()
         {
             HttpClient authClient = new HttpClient();
@@ -51,11 +48,6 @@ namespace Integration.Salesforce.Context
             SalesforceUrls.Add("instance_url", obj["instance_url"].ToString() );
         }
 
-         /// <summary>
-        /// Get all info for object of type AModel from salesforce.
-        /// </summary>
-        /// <param name="str"> specify the data to retrieve from Salesforce  </param>
-        /// <returns> returns IEnumerable of AModels </returns>
         internal async Task<IEnumerable<TModel>> RetrieveFromSalesforce(string query)
         {
             List<TModel> modelList = new List<TModel>();
