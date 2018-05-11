@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using Integration.Salesforce.Library.Abstract;
+using Integration.Salesforce.Library.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -105,5 +107,24 @@ namespace Integration.Salesforce.Context
         {
              return _collection.Find(_ => true).ToList();
         }
+        public IEnumerable<Person> GetModels()
+        {
+            Person person1 = new Person();
+            Person person2 = new Person();
+            
+            person1.FirstName = "james";
+            person2.FirstName = "jim";
+
+            List<Person> modelList = new List<Person>();
+
+            TModel model1 = new TModel();
+            
+
+            modelList.Add(person1);
+            modelList.Add(person2);
+
+            return modelList;
+        }
+
     }
 }

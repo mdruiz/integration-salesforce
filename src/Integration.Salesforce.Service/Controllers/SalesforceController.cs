@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Integration.Salesforce.Service.Controllers
 {
-  [Route("api/[conroller]")]
+  [Route("api/[controller]")]
   public class SalesforceController : Controller
   {
     public async Task<IActionResult> Get()

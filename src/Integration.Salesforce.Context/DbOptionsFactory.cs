@@ -6,7 +6,7 @@ public static class DbOptionsFactory
     static DbOptionsFactory()
     {
         var config = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
+            .AddJsonFile("appsettings.dev.json")
             .Build();
         ConnectionString = config["MongoDB:ConnectionString"];
         DatabaseName = config["MongoDB:Database"];
