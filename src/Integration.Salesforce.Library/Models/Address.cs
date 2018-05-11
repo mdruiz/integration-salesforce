@@ -16,11 +16,13 @@ namespace Integration.Salesforce.Library.Models
 
         [Required]
         [MaxLength(2)]
+        [MinLength(2)]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public override string State { get; set; }
 
         [Required]
         [MaxLength(5)]
+        [MinLength(5)]
         [NumberValidation(ErrorMessage = "{0} invalid number input")]
         public override int Zip { get; set; }
 
