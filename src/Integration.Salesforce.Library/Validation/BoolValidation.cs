@@ -11,16 +11,16 @@ namespace Integration.Salesforce.Library.Validation
     {
         public bool IsValid(bool value)
         {
-        if (value == true)
-        {
-            return true;
-        }
-        return false;
+            if (value == true)
+            {
+                return true;
+            }
+            return false;
         }
 
         public override string FormatErrorMessage(string name)
         {
-        return String.Format(CultureInfo.CurrentCulture, ErrorMessageString, name);
+            return String.Format(CultureInfo.CurrentCulture, ErrorMessageString, name);
         }
     }
 }

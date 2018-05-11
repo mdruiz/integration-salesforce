@@ -11,21 +11,21 @@ namespace Integration.Salesforce.Library.Validation
     {
         public override bool IsValid(object value)
         {
-        DateTime temp;
+            DateTime temp;
 
-        if(DateTime.TryParse(Convert.ToString(value), out temp) == true)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+            if (DateTime.TryParse(Convert.ToString(value), out temp) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override string FormatErrorMessage(string name)
         {
-        return String.Format(CultureInfo.CurrentCulture, ErrorMessageString, name);
+            return String.Format(CultureInfo.CurrentCulture, ErrorMessageString, name);
         }
     }
 }
