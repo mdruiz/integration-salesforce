@@ -9,6 +9,10 @@ namespace Integration.Salesforce.Library.Models
 {
     public class Person : AModel
     {
+        public Person()
+        {
+            ModelType = "persons";
+        }
         
         [Required]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
