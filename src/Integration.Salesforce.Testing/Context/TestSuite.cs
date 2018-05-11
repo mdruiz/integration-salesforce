@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Integration.Salesforce.Context;
 using Xunit;
 
 namespace Integration.Salesforce.Testing.Context
@@ -7,10 +9,14 @@ namespace Integration.Salesforce.Testing.Context
     public void DatabaseConnection()
         {
             IOptions<Settings> settings = Options.Create(new Settings());
-             string connectionString = 
-                "mongodb://integration-dev1:HsVcVG5kDlyYiwX26ilme1WA3wtwovx4Xqve8sQapHzRAZD0bghwcADLLzSZb5HTG1BWvNMCiVWlkEykT2O0LQ==@integration-dev1.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-            settings.Value.ConnectionString = connectionString;
-            settings.Value.Database = "housingdb";
+            //  string connectionString = 
+            //     "mongodb://integration-dev1:HsVcVG5kDlyYiwX26ilme1WA3wtwovx4Xqve8sQapHzRAZD0bghwcADLLzSZb5HTG1BWvNMCiVWlkEykT2O0LQ==@integration-dev1.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+            // settings.Value.ConnectionString = connectionString;
+            // settings.Value.Database = "housingdb";
+
+            settings.Value.ConnectionString = DbOptionsFactory.ConnectionString;
+            settings.Value.Database = DbOptionsFactory.DatabaseName;
+
             DbContext<Person> context = new DbContext<Person>(settings);
 
             //insert preset models
