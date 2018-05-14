@@ -18,6 +18,8 @@ namespace Integration.Salesforce.Library.Abstract
 
         public string ModelType { get;set;}
 
+        public bool Active {get;set;}
+
         /// <summary> 
         /// 
         /// </summary>
