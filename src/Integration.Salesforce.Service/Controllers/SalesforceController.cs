@@ -6,6 +6,7 @@ namespace Integration.Salesforce.Service.Controllers
   [Route("api/[controller]")]
   public class SalesforceController : Controller
   {
+    [HttpGet]
     public async Task<IActionResult> Get()
     {
       return await Task.Run(() => Ok());

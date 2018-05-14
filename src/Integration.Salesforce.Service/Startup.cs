@@ -9,11 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Integration.Salesforce.Service
 {
     public class Startup
     {
+        //TODO: get version from something more flexible
+        string version = "v1";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,6 +33,11 @@ namespace Integration.Salesforce.Service
             services.Configure<Settings>(Configuration.GetSection("Salesforce"));
             services.Configure<Settings>(Configuration.GetSection("SalesforceURLs"));
             
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(version, new Info { Title = "Revature Housing Salesforce API", Version = version });
+            });
+
             services.AddMvc();
         }
 
@@ -41,6 +49,13 @@ namespace Integration.Salesforce.Service
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint($"/swagger/{version}/swagger.json", $"Revature Housing Salesforce API {version}");
+                c.RoutePrefix = string.Empty;
+            });
+            app.UseDeveloperExceptionPage();
             app.UseMvc();
         }
     }
