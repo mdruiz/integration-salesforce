@@ -110,24 +110,20 @@ namespace Integration.Salesforce.Context
         {
              return _collection.Find(item => item.Active).ToList();
         }
-        public IEnumerable<Person> GetModels()
+        public void RemoveAllMongoEntries()
         {
-            Person person1 = new Person();
-            Person person2 = new Person();
-            
-            person1.FirstName = "james";
-            person2.FirstName = "jim";
-
-            List<Person> modelList = new List<Person>();
-
-            TModel model1 = new TModel();
-            
-
-            modelList.Add(person1);
-            modelList.Add(person2);
-
-            return modelList;
+            var builder = Builders<TModel>.Filter;
+            var filter = builder.Empty;
+            _collection.DeleteMany(filter);
         }
-
+        public void RemoveMongoEntries(IEnumerable<TModel> dataContacts)
+        {
+            var builder = Builders<TModel>.Filter;
+            foreach(var item in dataContacts)
+            {
+                var filter = builder.Eq(x => x.ModelId, item.ModelId);
+                _collection.DeleteMany(filter);
+            }
+        }
     }
 }
