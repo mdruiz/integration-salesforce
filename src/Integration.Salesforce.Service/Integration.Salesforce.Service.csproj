@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Integration.Salesforce.Library\Integration.Salesforce.Library.csproj" />
+    <ProjectReference Include="..\Integration.Salesforce.Context\Integration.Salesforce.Context.csproj" />
   </ItemGroup>
 
 </Project>
