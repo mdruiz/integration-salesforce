@@ -17,16 +17,23 @@ namespace Integration.Salesforce.Library.Models
 
         [Required]
         [MaxLength(2)]
+        [MinLength(2)]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string State { get; set; }
 
         [Required]
+        [MaxLength(5)]
+        [MinLength(5)]
         [NumberValidation(ErrorMessage = "{0} invalid number input")]
         public override int Zip { get; set; }
-        [Required]
-        [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string Country { get; set; }
 
+        public override string ToString()
+        {
+            string returnString = $"ADDRESS{{StreetAddress:{StreetAddress};City:{City};State:{State};Zip:{Zip};}}";
+
+            return returnString;
+        }
         public void MapJsonToModel(JObject json)
         {
             //Address (Street, city, state, postal code, country)
@@ -35,11 +42,6 @@ namespace Integration.Salesforce.Library.Models
             this.State = json["MailingState"].ToString();
             this.Zip = json["MailingPostalCode"].ToObject<int>();
             this.Country = json["MailingCountry"].ToString();
-        }
-
-        public override string ToString()
-        {
-            return $"{StreetAddress}, {City}, {State}, {Zip}";
         }
     }
 }
