@@ -8,18 +8,19 @@ namespace Integration.Salesforce.Testing.Context
 {
   public class TestSuite
   {
-      [Fact]
-    public void DatabaseConnection()
+        [Fact]
+        public void TestPersonEntry()
         {
-            IOptions<Settings> settings = Options.Create(new Settings());
+             IOptions<Settings> settings = Options.Create(new Settings());
 
             settings.Value.ConnectionString = DbOptionsFactory.ConnectionString;
             settings.Value.Database = DbOptionsFactory.DatabaseName;
 
             DbContext<Person> context = new DbContext<Person>(settings);
 
-            //insert preset models
-            context.UpdateMongoDB(context.GetModels());
+            //insert preset person models
+            IEnumerable<Person> models = GetPersonTestModels();
+            context.UpdateMongoDB(models);
             
             List<Person> pl = (List<Person>) context.ReadMongoEntries();
             bool r = false;
@@ -30,6 +31,7 @@ namespace Integration.Salesforce.Testing.Context
                     r = true;
                 }
             }
+            context.DeleteMongoEntries(models);
             Assert.True(r);
         }
         [Fact]
@@ -53,6 +55,21 @@ namespace Integration.Salesforce.Testing.Context
                 }
             }
             Assert.True(r);
+        }
+        public IEnumerable<Person> GetPersonTestModels()
+        {
+            Person person1 = new Person();
+            Person person2 = new Person();
+            
+            person1.FirstName = "james";
+            person2.FirstName = "jim";
+
+            List<Person> modelList = new List<Person>();            
+
+            modelList.Add(person1);
+            modelList.Add(person2);
+
+            return modelList;
         }
     }
 }
