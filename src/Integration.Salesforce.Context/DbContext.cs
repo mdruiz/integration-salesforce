@@ -82,8 +82,7 @@ namespace Integration.Salesforce.Context
                     var builder = Builders<TModel>.Filter;
                     var filter = builder.Eq (x => x.ModelId, dataContact.ModelId);
                     
-                    _collection.DeleteOne(filter);
-                    _collection.InsertOne(dataContact);
+                    _collection.ReplaceOne(filter, dataContact);
                 }
             }
         }
