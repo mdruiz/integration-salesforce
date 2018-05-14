@@ -88,7 +88,7 @@ namespace Integration.Salesforce.Context
         }
         public TModel GetModelById(string modelId)
         {
-            return _collection.Find(_=> true).ToList().Find(item => item.ModelId == modelId);
+            return (TModel)_collection.Find(item => item.ModelId == modelId);
         }
         public void DeleteMongoEntries(IEnumerable<TModel> dataContacts)
         {
