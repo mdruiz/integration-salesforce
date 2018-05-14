@@ -108,7 +108,7 @@ namespace Integration.Salesforce.Context
         }
         public IEnumerable<TModel> ReadMongoEntries()
         {
-             return _collection.Find(_ => true).ToList();
+             return _collection.Find(item => item.Active).ToList();
         }
         public IEnumerable<Person> GetModels()
         {
