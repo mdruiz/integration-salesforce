@@ -14,7 +14,7 @@ namespace Integration.Salesforce.Library.Models
             ModelType = "persons";
             Address = new Address();
         }
-
+        
         [Required]
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string FirstName { get; set; }
@@ -49,7 +49,7 @@ namespace Integration.Salesforce.Library.Models
 
         public override string ToString()
         {
-            string returnString = $"PERSON{{Name:{FirstName} {LastName};Phone:{Phone};Role:{Role};HasCar:{HasCar};BatchName:{BatchName};}}";
+            string returnString = $"PERSON{{Name:{FirstName} {LastName};Phone:{Phone};EMail:{EMail};Role:{Role};HasCar:{HasCar};BatchName:{BatchName};}}";
             returnString += Address.ToString();
 
             return returnString;
