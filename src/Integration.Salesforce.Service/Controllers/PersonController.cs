@@ -28,7 +28,7 @@ namespace Integration.Salesforce.Service.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(string id)
         {
-            Person p = context.GetEntryByID(id);
+            Person p = context.GetModelById(id);
             p.Active = false;
             List<Person> pList = new List<Person>();
             pList.Add(p);
