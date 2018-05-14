@@ -82,10 +82,13 @@ namespace Integration.Salesforce.Context
                     var builder = Builders<TModel>.Filter;
                     var filter = builder.Eq (x => x.ModelId, dataContact.ModelId);
                     
-                    _collection.DeleteOne(filter);
-                    _collection.InsertOne(dataContact);
+                    _collection.ReplaceOne(filter, dataContact);
                 }
             }
+        }
+        public TModel GetModelById(string modelId)
+        {
+            return _collection.Find(_=> true).ToList().Find(item => item.ModelId == modelId);
         }
         public void DeleteMongoEntries(IEnumerable<TModel> dataContacts)
         {
@@ -105,7 +108,7 @@ namespace Integration.Salesforce.Context
         }
         public IEnumerable<TModel> ReadMongoEntries()
         {
-             return _collection.Find(_ => true).ToList();
+             return _collection.Find(item => item.Active).ToList();
         }
         public IEnumerable<Person> GetModels()
         {
