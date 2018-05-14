@@ -45,8 +45,6 @@ namespace Integration.Salesforce.Library.Models
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string BatchName { get; set; }
 
-        public bool HousingStatus { get; set; }
-
         public override string ToString()
         {
             string returnString = $"PERSON{{Name:{FirstName} {LastName};Phone:{Phone};EMail:{EMail};Role:{Role};HasCar:{HasCar};BatchName:{BatchName};}}";
@@ -74,7 +72,7 @@ namespace Integration.Salesforce.Library.Models
                 this.Address.MapJsonToModel(json);
                 this.EMail = json["Email"].ToString();
                 this.BatchName = json["Training_Batch__c"].ToString();
-                this.HousingStatus = json["Housing_Agreement__c"].ToObject<bool>();
+                this.Active = json["Housing_Agreement__c"].ToObject<bool>();
             }
             catch (ArgumentNullException e)
             {
