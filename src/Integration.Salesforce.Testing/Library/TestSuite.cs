@@ -101,7 +101,7 @@ namespace Integration.Salesforce.Testing.Library.ModelTests
             Assert.Equal(p.HasCar, o["HR_Has_Car__c"].ToObject<bool>());
             Assert.Equal(p.EMail, o["Email"].ToString());
             Assert.Equal(p.BatchName, o["Training_Batch__c"].ToString());
-            Assert.Equal(p.HousingStatus, o["Housing_Agreement__c"].ToObject<bool>());
+            Assert.Equal(p.Active, o["Housing_Agreement__c"].ToObject<bool>());
         }
     }
 }
