@@ -12,6 +12,7 @@ namespace Integration.Salesforce.Library.Models
         public Person()
         {
             ModelType = "persons";
+            Address = new Address();
         }
         
         [Required]
@@ -44,10 +45,7 @@ namespace Integration.Salesforce.Library.Models
         [StringValidation(ErrorMessage = "{0} invalid string input")]
         public string BatchName { get; set; }
 
-        public override void MapJsonToModel(JObject jsonObject)
-        {
-            throw new NotImplementedException();
-        }
+        public bool HousingStatus { get; set; }
 
         public override string ToString()
         {
@@ -55,6 +53,44 @@ namespace Integration.Salesforce.Library.Models
             returnString += Address.ToString();
 
             return returnString;
+        }
+
+        public override void MapJsonToModel(JObject json)
+        {
+            //Services need at least:
+            //Name (First, last), Email, BatchName,IsMale, Phone number, HasCar, Address (Street, city, state, postal code, country)
+
+            try
+            {
+                if (json == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                this.FirstName = json.GetValue("FirstName").Value<string>();
+                this.LastName = json.GetValue("LastName").Value<string>();
+                this.Phone = json.GetValue("MobilePhone").Value<string>();
+                this.Role = json.GetValue("Candidate_Type__c").Value<string>();
+                this.HasCar = json.GetValue("HR_Has_Car__c").Value<bool>();
+                this.Address.MapJsonToModel(json);
+                this.EMail = json["Email"].ToString();
+                this.BatchName = json["Training_Batch__c"].ToString();
+                this.HousingStatus = json["Housing_Agreement__c"].ToObject<bool>();
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine("No json");
+                throw e;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Attribute not found");
+                throw e;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Mapping Failed");
+                throw e;
+            }
         }
     }
 }
