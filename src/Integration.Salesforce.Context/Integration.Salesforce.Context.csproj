@@ -5,6 +5,7 @@
   </PropertyGroup>
 
     <ItemGroup>
+    <PackageReference Include="FluentScheduler" Version="5.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.1" />
@@ -13,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include = "..\Integration.Salesforce.Library\Integration.Salesforce.Library.csproj"/>
+    <ProjectReference Include="..\Integration.Salesforce.Library\Integration.Salesforce.Library.csproj" />
   </ItemGroup>
 
 </Project>
