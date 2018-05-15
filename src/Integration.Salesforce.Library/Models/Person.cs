@@ -73,6 +73,7 @@ namespace Integration.Salesforce.Library.Models
                 this.EMail = json["Email"].ToString();
                 this.BatchName = json["Training_Batch__c"].ToString();
                 this.Active = json["Housing_Agreement__c"].ToObject<bool>();
+                this.ModelId = json["Id"].ToString();
             }
             catch (ArgumentNullException e)
             {
