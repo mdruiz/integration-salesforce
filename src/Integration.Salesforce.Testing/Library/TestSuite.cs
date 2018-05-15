@@ -67,6 +67,7 @@ namespace Integration.Salesforce.Testing.Library.ModelTests
             Email = "test@test.com",
             Training_Batch__c = "Test Batch",
             Housing_Agreement__c = "true",
+            Id = "aldsjkfalsdfasanldflafja",
             MailingStreet = "7357 st",
             MailingCity = "Test City",
             MailingState = "TS",
@@ -102,6 +103,7 @@ namespace Integration.Salesforce.Testing.Library.ModelTests
             Assert.Equal(p.EMail, o["Email"].ToString());
             Assert.Equal(p.BatchName, o["Training_Batch__c"].ToString());
             Assert.Equal(p.Active, o["Housing_Agreement__c"].ToObject<bool>());
+            Assert.Equal(p.ModelId, o["Id"].ToString());
         }
     }
 }
