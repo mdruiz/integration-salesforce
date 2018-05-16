@@ -68,12 +68,16 @@ namespace Integration.Salesforce.Library.Models
                 this.LastName = json.GetValue("LastName").Value<string>();
                 this.Phone = json.GetValue("MobilePhone").Value<string>();
                 this.Role = json.GetValue("Candidate_Type__c").Value<string>();
-                this.HasCar = json.GetValue("HR_Has_Car__c").Value<bool>();
                 this.Address.MapJsonToModel(json);
                 this.EMail = json["Email"].ToString();
                 this.BatchName = json["Training_Batch__c"].ToString();
                 this.Active = json["Housing_Agreement__c"].ToObject<bool>();
                 this.ModelId = json["Id"].ToString();
+                
+                if(json.GetValue("HR_Has_Car__c").Value<string>() != null)
+                {
+                    this.HasCar = json.GetValue("HR_Has_Car__c").Value<bool>();
+                }
             }
             catch (ArgumentNullException e)
             {
