@@ -17,15 +17,18 @@ namespace Integration.Salesforce.Service
     {
         //TODO: get version from something more flexible
         string version = "v1";
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment env;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment Env)
         {
             Configuration = configuration;
+            env = Env;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
             // Configuration for reading from appsettings
             services.AddOptions();
@@ -45,14 +48,14 @@ namespace Integration.Salesforce.Service
 
             else
             {
-                Strings.Add(Configuration.GetSection("MongoDB:ConnectionString").ToString());
-                Strings.Add(Configuration.GetSection("MongoDB:Database").ToString());
-                Strings.Add(Configuration.GetSection("Salesforce:ClientId").ToString());
-                Strings.Add(Configuration.GetSection("Salesforce:ClientSecret").ToString());
-                Strings.Add(Configuration.GetSection("Salesforce:UserName").ToString());
-                Strings.Add(Configuration.GetSection("Salesforce:Password").ToString());
-                Strings.Add(Configuration.GetSection("SalesforceURLs:LoginUrl").ToString());
-                Strings.Add(Configuration.GetSection("SalesforceURLs:ResourceUrlExtension").ToString());
+                Strings.Add(Configuration.GetSection("MongoDB:ConnectionString").Value);
+                Strings.Add(Configuration.GetSection("MongoDB:Database").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:ClientId").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:ClientSecret").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:UserName").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:Password").Value);
+                Strings.Add(Configuration.GetSection("SalesforceURLs:LoginUrl").Value);
+                Strings.Add(Configuration.GetSection("SalesforceURLs:ResourceUrlExtension").Value);
             }
 
             Settings sModel = new Settings(Strings);

@@ -17,19 +17,19 @@ namespace Integration.Salesforce.Context
         // SalesForceUrls contains all the URLs required for all HTTP requests
         protected readonly Dictionary<string, string> SalesforceUrls;
         
-        public SalesforceContext(IOptions<Settings> settings)
+        public SalesforceContext(Settings settings)
         {
             SalesforceConfig = new Dictionary<string, string>();
             SalesforceUrls = new Dictionary<string, string>();
 
             SalesforceConfig.Add("grant_type", "password");
-            SalesforceConfig.Add("client_id", settings.Value.ClientId);
-            SalesforceConfig.Add("client_secret", settings.Value.ClientSecret);
-            SalesforceConfig.Add("username", settings.Value.Username);
-            SalesforceConfig.Add("password", settings.Value.Password);
+            SalesforceConfig.Add("client_id", settings.ClientId);
+            SalesforceConfig.Add("client_secret", settings.ClientSecret);
+            SalesforceConfig.Add("username", settings.Username);
+            SalesforceConfig.Add("password", settings.Password);
 
-            SalesforceUrls.Add("login", settings.Value.LoginUrl);
-            SalesforceUrls.Add("resource_base", settings.Value.ResourceUrlExtension);
+            SalesforceUrls.Add("login", settings.LoginUrl);
+            SalesforceUrls.Add("resource_base", settings.ResourceUrlExtension);
 
             Task.Run(() => GetAuthToken()).Wait();
         }

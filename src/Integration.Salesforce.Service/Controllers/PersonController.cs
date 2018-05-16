@@ -10,9 +10,9 @@ namespace Integration.Salesforce.Service.Controllers
     [Route("api/[controller]")]
     public class PersonController : Controller
     {
-        private IOptions<Settings> _settings;
+        private Settings _settings;
         private DbContext<Person> context;
-        public PersonController(IOptions<Settings> settings)
+        public PersonController(Settings settings)
         {
             _settings = settings;
             context = new DbContext<Person>(_settings);
@@ -24,7 +24,6 @@ namespace Integration.Salesforce.Service.Controllers
             return await Task.Run(() => context.ReadMongoEntries());
         }
 
-        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(string id)
         {
