@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 using Integration.Salesforce.Library.Abstract;
 using Integration.Salesforce.Library.Validation;
 using MongoDB.Bson.Serialization.Attributes;
@@ -72,11 +73,15 @@ namespace Integration.Salesforce.Library.Models
                 this.EMail = json["Email"].ToString();
                 this.BatchName = json["Training_Batch__c"].ToString();
                 this.Active = json["Housing_Agreement__c"].ToObject<bool>();
-                this.ModelId = json["Id"].ToString();
+                this.ModelId = json["Id"].ToString().Substring(6);
                 
                 if(json.GetValue("HR_Has_Car__c").Value<string>() != null)
                 {
-                    this.HasCar = json.GetValue("HR_Has_Car__c").Value<bool>();
+                    //this.HasCar = json.GetValue("HR_Has_Car__c").Value<bool>();
+                    if(json.GetValue("HR_Has_Car__c").Value<string>() == "Yes")
+                    {
+                        this.HasCar = true;
+                    }
                 }
             }
             catch (ArgumentNullException e)

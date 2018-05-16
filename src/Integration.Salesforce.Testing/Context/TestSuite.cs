@@ -31,7 +31,7 @@ namespace Integration.Salesforce.Testing.Context
                     r = true;
                 }
             }
-            context.DeleteMongoEntries(models);
+            //context.DeleteMongoEntries(models);
             Assert.True(r);
         }
         [Fact]

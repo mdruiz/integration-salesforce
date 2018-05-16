@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Integration.Salesforce.Context;
+using Integration.Salesforce.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -20,6 +21,15 @@ namespace Integration.Salesforce.Service.Controllers
         {
             var updateJob = new ScheduleUpdate(_settings);
             await updateJob.Update();
+            return await Task.Run(() => Ok());
+        }
+
+        [HttpGet("delete")]
+        public async Task<IActionResult> delete()
+        {
+            DbContext<Person> context = new DbContext<Person>(_settings);
+            context.RemoveAllMongoEntries();
+
             return await Task.Run(() => Ok());
         }
 
