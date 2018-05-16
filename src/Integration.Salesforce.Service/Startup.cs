@@ -74,11 +74,6 @@ namespace Integration.Salesforce.Service
                 app.UseDeveloperExceptionPage();
             }
 
-            if (env.IsStaging())
-            {
-                
-            }
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
