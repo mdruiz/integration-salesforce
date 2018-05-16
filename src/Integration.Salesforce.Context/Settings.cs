@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Integration.Salesforce.Context
 {
     /// <summary>
@@ -23,5 +25,22 @@ namespace Integration.Salesforce.Context
         // Salesforce URLs
         public string LoginUrl { get; set; }
         public string ResourceUrlExtension { get; set; }
+
+        public Settings()
+        {
+            
+        }
+
+        public Settings(List<string> Strings)
+        {
+            ConnectionString = Strings[0];
+            Database = Strings[1];
+            ClientId = Strings[2];
+            ClientSecret = Strings[3];
+            Username = Strings[4];
+            Password = Strings[5];
+            LoginUrl = Strings[6];
+            ResourceUrlExtension = Strings[7];
+        }
     }
 }
