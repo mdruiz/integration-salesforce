@@ -10,12 +10,6 @@ public static class DbOptionsFactory
             .Build();
         ConnectionString = config["MongoDB:ConnectionString"];
         DatabaseName = config["MongoDB:Database"];
-
-
-        // DbContextOptions = new DbContextOptionsBuilder<MyDbContext>()
-        //     .UseSqlServer(connectionString)
-        //     .Options;
-
         
     }
 

@@ -77,7 +77,6 @@ namespace Integration.Salesforce.Library.Models
                 
                 if(json.GetValue("HR_Has_Car__c").Value<string>() != null)
                 {
-                    //this.HasCar = json.GetValue("HR_Has_Car__c").Value<bool>();
                     if(json.GetValue("HR_Has_Car__c").Value<string>() == "Yes")
                     {
                         this.HasCar = true;
