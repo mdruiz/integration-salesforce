@@ -61,6 +61,14 @@ namespace Integration.Salesforce.Service
             Settings sModel = new Settings(Strings);
             services.AddSingleton(sModel);
 
+            services.AddCors(o => o.AddPolicy("Open", builder => 
+            {
+                builder.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowCredentials();
+            }));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(version, new Info { Title = "Revature Housing Salesforce API", Version = version });
@@ -72,6 +80,7 @@ namespace Integration.Salesforce.Service
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("Open");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
