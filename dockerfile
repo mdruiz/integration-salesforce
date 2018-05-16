@@ -9,6 +9,5 @@ WORKDIR /webapi
 COPY --from=build /docker/www/ .
 ENV ASPNETCORE_ENVIRONMENT=Staging
 ENV ASPNETCORE_URLS=http://+:80/
-ENV ASPNETCORE_ENVIRONMENT=Staging
 EXPOSE 80
 CMD [ "dotnet", "Integration.Salesforce.Service.dll" ]
