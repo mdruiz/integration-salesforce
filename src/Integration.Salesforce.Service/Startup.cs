@@ -25,14 +25,39 @@ namespace Integration.Salesforce.Service
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
         {
             // Configuration for reading from appsettings
             services.AddOptions();
-            services.Configure<Settings>(Configuration.GetSection("MongoDB"));
-            services.Configure<Settings>(Configuration.GetSection("Salesforce"));
-            services.Configure<Settings>(Configuration.GetSection("SalesforceURLs"));
-            
+            List<string> Strings = new List<string>();
+
+            if (env.IsStaging())
+            {
+                Strings.Add(Environment.GetEnvironmentVariable("MONGODB_CONNECTION_STRING"));
+                Strings.Add(Environment.GetEnvironmentVariable("MONGODB_DATABASE"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_CLIENT_ID"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_CLIENT_SECRET"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_PASSWORD"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_URLS_LOGIN_URL"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_URLS_RESOURCE_URL_EXTENSION"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_USERNAME"));
+            }
+
+            else
+            {
+                Strings.Add(Configuration.GetSection("MongoDB:ConnectionString").Value);
+                Strings.Add(Configuration.GetSection("MongoDB:Database").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:ClientId").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:ClientSecret").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:UserName").Value);
+                Strings.Add(Configuration.GetSection("Salesforce:Password").Value);
+                Strings.Add(Configuration.GetSection("SalesforceURLs:LoginUrl").Value);
+                Strings.Add(Configuration.GetSection("SalesforceURLs:ResourceUrlExtension").Value);
+            }
+
+            Settings sModel = new Settings(Strings);
+            services.AddSingleton(sModel);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(version, new Info { Title = "Revature Housing Salesforce API", Version = version });
