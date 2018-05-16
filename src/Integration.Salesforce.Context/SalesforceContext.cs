@@ -53,8 +53,10 @@ namespace Integration.Salesforce.Context
         {
             List<TModel> modelList = new List<TModel>();
             HttpClient queryClient = new HttpClient();
+            
+            var sqlQuery = "SELECT Name FROM "+ query;
 
-            string restQuery = SalesforceUrls["instance_url"] + SalesforceUrls["resource_base"] + query;
+            string restQuery = SalesforceUrls["instance_url"] + SalesforceUrls["resource_base"] + sqlQuery;
             HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Get, restQuery);
             req.Headers.Add("Authorization", "Bearer " + SalesforceConfig["access_token"]);
             req.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
