@@ -90,7 +90,6 @@ namespace Integration.Salesforce.Testing.Library.ModelTests
             Assert.Equal(add.Zip, o["MailingPostalCode"]);
             Assert.Equal(add.Country, o["MailingCountry"].ToString());
         }
-        [Fact]
         public void TestPersonMap()
         {
             Person p = new Person();
