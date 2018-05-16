@@ -59,7 +59,10 @@ namespace Integration.Salesforce.Testing.Context
         public IEnumerable<Person> GetPersonTestModels()
         {
             Person person1 = new Person();
+            person1.Active = true;
             Person person2 = new Person();
+            person2.Active = true;
+            
             
             person1.FirstName = "james";
             person2.FirstName = "jim";
@@ -71,5 +74,20 @@ namespace Integration.Salesforce.Testing.Context
 
             return modelList;
         }
+
+        [Fact]
+        public void RemoveMongoDB()
+        {
+            IOptions<Settings> settings = Options.Create(new Settings());
+
+            settings.Value.ConnectionString = DbOptionsFactory.ConnectionString;
+            settings.Value.Database = DbOptionsFactory.DatabaseName;
+
+            DbContext<Person> context = new DbContext<Person>(settings);
+
+            context.RemoveAllMongoEntries();
+
+        }
+        
     }
 }

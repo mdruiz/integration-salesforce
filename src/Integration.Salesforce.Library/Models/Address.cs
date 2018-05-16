@@ -40,8 +40,12 @@ namespace Integration.Salesforce.Library.Models
             this.StreetAddress = json["MailingStreet"].ToString();
             this.City = json["MailingCity"].ToString();
             this.State = json["MailingState"].ToString();
-            this.Zip = json["MailingPostalCode"].ToObject<int>();
             this.Country = json["MailingCountry"].ToString();
+
+            if(json["MailingPostalCode"].ToObject<string>() != null)
+            {
+                this.Zip = json["MailingPostalCode"].ToObject<int>();
+            }
         }
     }
 }
