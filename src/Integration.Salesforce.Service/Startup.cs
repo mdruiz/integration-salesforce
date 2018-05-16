@@ -45,14 +45,14 @@ namespace Integration.Salesforce.Service
 
             else
             {
-                Strings.Add(Configuration.GetSection("MongoDB:ConnectionString").Value);
-                Strings.Add(Configuration.GetSection("MongoDB:Database").Value);
-                Strings.Add(Configuration.GetSection("Salesforce:ClientId").Value);
-                Strings.Add(Configuration.GetSection("Salesforce:ClientSecret").Value);
-                Strings.Add(Configuration.GetSection("Salesforce:UserName").Value);
-                Strings.Add(Configuration.GetSection("Salesforce:Password").Value);
-                Strings.Add(Configuration.GetSection("SalesforceURLs:LoginUrl").Value);
-                Strings.Add(Configuration.GetSection("SalesforceURLs:ResourceUrlExtension").Value);
+                Strings.Add(Configuration.GetSection("MongoDB:ConnectionString").ToString());
+                Strings.Add(Configuration.GetSection("MongoDB:Database").ToString());
+                Strings.Add(Configuration.GetSection("Salesforce:ClientId").ToString());
+                Strings.Add(Configuration.GetSection("Salesforce:ClientSecret").ToString());
+                Strings.Add(Configuration.GetSection("Salesforce:UserName").ToString());
+                Strings.Add(Configuration.GetSection("Salesforce:Password").ToString());
+                Strings.Add(Configuration.GetSection("SalesforceURLs:LoginUrl").ToString());
+                Strings.Add(Configuration.GetSection("SalesforceURLs:ResourceUrlExtension").ToString());
             }
 
             Settings sModel = new Settings(Strings);
