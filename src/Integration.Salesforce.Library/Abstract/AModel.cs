@@ -11,7 +11,7 @@ namespace Integration.Salesforce.Library.Abstract
         /// This is an ObjectId in MongoDB and string when exposing to API
         /// </summary>
         [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
+        //[BsonRepresentation(BsonType.ObjectId)]
         public string ModelId { get; set; }
 
         public DateTime LastModified { get; set; }
