@@ -40,10 +40,11 @@ namespace Integration.Salesforce.Service
                 Strings.Add(Environment.GetEnvironmentVariable("MONGODB_DATABASE"));
                 Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_CLIENT_ID"));
                 Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_CLIENT_SECRET"));
+                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_USERNAME"));
                 Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_PASSWORD"));
                 Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_URLS_LOGIN_URL"));
                 Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_URLS_RESOURCE_URL_EXTENSION"));
-                Strings.Add(Environment.GetEnvironmentVariable("SALESFORCE_USERNAME"));
+                
             }
 
             else
