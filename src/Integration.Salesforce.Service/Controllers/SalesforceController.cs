@@ -9,9 +9,9 @@ namespace Integration.Salesforce.Service.Controllers
     [Route("api/[controller]")]
     public class SalesforceController : Controller
     {
-        private IOptions<Settings> _settings;
+        private Settings _settings;
         
-        public SalesforceController(IOptions<Settings> settings)
+        public SalesforceController(Settings settings)
         {
             _settings = settings;
         }

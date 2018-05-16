@@ -7,7 +7,7 @@ namespace Integration.Salesforce.Context
 {
     public class ScheduleUpdate
     {
-        private IOptions<Settings> _settings;
+        private Settings _settings;
 
         private Dictionary<string,string> categories = new Dictionary<string, string>(){
             {"Contacts","Contact"}, {"Training","Training__c"}, 
@@ -15,7 +15,7 @@ namespace Integration.Salesforce.Context
             {"HousingBeds","HousingBed__c"}, {"HousingUnits","HousingUnit__c"}
         };
 
-        public ScheduleUpdate(IOptions<Settings> settings)
+        public ScheduleUpdate(Settings settings)
         {
             _settings = settings;
         }
@@ -30,6 +30,7 @@ namespace Integration.Salesforce.Context
             //Update mongodb database
             var persondb = new DbContext<Person>(_settings);
             persondb.UpdateMongoDB(personList);
+            persondb.UpdateMongoEntries(personList);
         }
     }
     

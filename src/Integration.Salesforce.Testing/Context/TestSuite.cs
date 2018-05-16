@@ -11,10 +11,10 @@ namespace Integration.Salesforce.Testing.Context
         [Fact]
         public void TestPersonEntry()
         {
-             IOptions<Settings> settings = Options.Create(new Settings());
+            Settings settings = new Settings();
 
-            settings.Value.ConnectionString = DbOptionsFactory.ConnectionString;
-            settings.Value.Database = DbOptionsFactory.DatabaseName;
+            settings.ConnectionString = DbOptionsFactory.ConnectionString;
+            settings.Database = DbOptionsFactory.DatabaseName;
 
             DbContext<Person> context = new DbContext<Person>(settings);
 
@@ -37,10 +37,10 @@ namespace Integration.Salesforce.Testing.Context
         [Fact]
         public void DeleteAllMongoEntries()
         {
-            IOptions<Settings> settings = Options.Create(new Settings());
+            Settings settings = new Settings();
 
-            settings.Value.ConnectionString = DbOptionsFactory.ConnectionString;
-            settings.Value.Database = DbOptionsFactory.DatabaseName;
+            settings.ConnectionString = DbOptionsFactory.ConnectionString;
+            settings.Database = DbOptionsFactory.DatabaseName;
 
             DbContext<Person> context = new DbContext<Person>(settings);
 
@@ -78,10 +78,10 @@ namespace Integration.Salesforce.Testing.Context
         [Fact]
         public void RemoveMongoDB()
         {
-            IOptions<Settings> settings = Options.Create(new Settings());
+            Settings settings = new Settings();
 
-            settings.Value.ConnectionString = DbOptionsFactory.ConnectionString;
-            settings.Value.Database = DbOptionsFactory.DatabaseName;
+            settings.ConnectionString = DbOptionsFactory.ConnectionString;
+            settings.Database = DbOptionsFactory.DatabaseName;
 
             DbContext<Person> context = new DbContext<Person>(settings);
 

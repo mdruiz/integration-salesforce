@@ -24,10 +24,10 @@ namespace Integration.Salesforce.Context
 
         protected readonly TModel model = new TModel();
 
-        public DbContext(IOptions<Settings> Settings)
+        public DbContext(Settings Settings)
         {
             //connection string
-            string connectionString = Settings.Value.ConnectionString;
+            string connectionString = Settings.ConnectionString;
             
             MongoClientSettings settings = MongoClientSettings.FromUrl(
             new MongoUrl(connectionString)
@@ -37,7 +37,7 @@ namespace Integration.Salesforce.Context
             new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
             _client = new MongoClient(settings);
 
-            _db = _client.GetDatabase(Settings.Value.Database);
+            _db = _client.GetDatabase(Settings.Database);
 
             _collection = _db.GetCollection<TModel>(model.ModelType);
         }
