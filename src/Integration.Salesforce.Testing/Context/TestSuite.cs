@@ -8,7 +8,6 @@ namespace Integration.Salesforce.Testing.Context
 {
   public class TestSuite
   {
-        [Fact]
         public void TestPersonEntry()
         {
             Settings settings = new Settings();
@@ -31,10 +30,9 @@ namespace Integration.Salesforce.Testing.Context
                     r = true;
                 }
             }
-            //context.DeleteMongoEntries(models);
+            context.DeleteMongoEntries(models);
             Assert.True(r);
         }
-        [Fact]
         public void DeleteAllMongoEntries()
         {
             Settings settings = new Settings();
@@ -75,7 +73,6 @@ namespace Integration.Salesforce.Testing.Context
             return modelList;
         }
 
-        [Fact]
         public void RemoveMongoDB()
         {
             Settings settings = new Settings();
